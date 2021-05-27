@@ -24,11 +24,18 @@ dependencies {
 
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
-    testImplementation("org.jetbrains.kotlin:kotlin-test")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
+    testImplementation(platform("org.junit:junit-bom:5.7.1"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation("org.assertj:assertj-core:3.17.2")
+    testImplementation("io.mockk:mockk:1.11.0")
 }
 
 application {
     // Define the main class for the application.
     mainClass.set("me.sgorecki.legacy.AppKt")
 }
+
+tasks.test {
+    useJUnitPlatform()
+}
+
